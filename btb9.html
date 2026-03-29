@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2 id="welcome"></h2>
+    <p id="email-result"></p>
+
+    <script>
+        // 1. Khai báo biến chính xác theo yêu cầu của bạn
+        let fullName = "Nguyen Thi Tra My"; 
+        let studentId = "26A4041714";
+
+        // 2. Tạo Email: myntt.26a4041714@hvnh.edu.vn
+        let nameParts = fullName.toLowerCase().split(" "); // ["nguyen", "thi", "tra", "my"]
+        
+        let firstName = nameParts[3]; // Lấy chữ cuối cùng: "my"
+        let lastNameChar = nameParts[0][0]; // Lấy chữ đầu của "nguyen": "n"
+        let mid1Char = nameParts[1][0]; // Lấy chữ đầu của "thi": "t"
+        let mid2Char = nameParts[2][0]; // Lấy chữ đầu của "tra": "t"
+        
+        // Ghép lại thành: my + n + t + t + . + msv + @hvnh.edu.vn
+        let email = firstName + lastNameChar + mid1Char + mid2Char + "." + studentId.toLowerCase() + "@hvnh.edu.vn";
+
+        // 3. Phân tích mã sinh viên (MSV: 26A4041714)
+        let coursePeriod = studentId.substring(0, 2); // Lấy "26"
+        let facultyCode = studentId.substring(2, 3); // Lấy "A"
+        let faculty = "Công nghệ thông tin và Kinh tế số" ; 
+
+        // 4. Tính tổng 4 số cuối: 1, 7, 1, 4
+        let lastFour = studentId.slice(-4); // Lấy "1714"
+        // Ép kiểu từ chữ sang số để cộng (1+7+1+4)
+        let sum = Number(lastFour[0]) + Number(lastFour[1]) + Number(lastFour[2]) + Number(lastFour[3]);
+
+        // 5. Hiển thị ra màn hình
+        document.getElementById("email-result").innerHTML = "<b>Email của bạn:</b> " + email;
+        document.getElementById("welcome").innerHTML = 
+            `Xin chào ${fullName}, bạn là sinh viên khóa ${coursePeriod}, khoa ${faculty}, tổng 4 số cuối trong mã sinh viên là ${sum}`;
+
+        // In ra Console để kiểm tra kỹ hơn
+        console.log("Phân tích tên:", nameParts);
+        console.log("Tổng số cuối:", sum);
+    </script>
+</body>
+</html>
