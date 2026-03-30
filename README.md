@@ -1,1 +1,39 @@
 # BT_TKW_B9
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Xin chào <b><span id="name"></span></b>, MSSV: <b><span id="id"></span></b>, bạn là sinh viên khóa <b><span id="course"></span></b>, khoa <b><span id="faculty"></span></b>, tổng 4 số cuối trong mã sinh viên là: <b><span id="sum"></span></b></p>
+    <p id="email-result" style="font-style: italic;"></p>
+
+    <script>
+        // 1. Khai báo dữ liệu của My
+        let fullName = "Nguyen Thi Tra My"; 
+        let studentId = "26A4041714";
+
+        // 2. Xử lý Email
+        let nameParts = fullName.toLowerCase().split(" ");
+        let firstName = nameParts[3]; 
+        let lastNameChar = nameParts[0][0]; 
+        let mid1Char = nameParts[1][0]; 
+        let mid2Char = nameParts[2][0]; 
+        let email = firstName + lastNameChar + mid1Char + mid2Char + "." + studentId.toLowerCase() + "@hvnh.edu.vn";
+
+        // 3. Phân tích MSV
+        let coursePeriod = studentId.substring(0, 2);
+        let facultyCode = studentId.substring(2, 3);
+        let faculty = "Công nghệ thông tin và Kinh tế số";
+
+        // 4. Tính tổng 4 số cuối (1+7+1+4)
+        let lastFour = studentId.slice(-4); 
+        let sum = Number(lastFour[0]) + Number(lastFour[1]) + Number(lastFour[2]) + Number(lastFour[3]);
+
+        // 5. ĐỔ DỮ LIỆU VÀO HTML (Quan trọng: ID phải giống hệt bên trên)
+        document.getElementById("name").innerHTML = fullName;
+        document.getElementById("id").innerHTML = studentId;
+        document.getElementById("course").innerHTML = coursePeriod;
+        document.getElementById("faculty").innerHTML = faculty;
+        document.getElementById("sum").innerHTML = sum;
+        document.getElementById("email-result").innerHTML = "Email của bạn là: " + email;
+    </script>
+</body>
+</html>
